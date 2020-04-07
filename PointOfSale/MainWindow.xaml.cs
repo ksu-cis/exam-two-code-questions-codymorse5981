@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Author: Cody Morse
+ * Class: MainWindow.xaml.cs
+ * Description: Handles MainWindow class for application (WPF)
+  */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

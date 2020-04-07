@@ -1,6 +1,12 @@
+/* Author: Cody Morse
+ * Class: CobblerUnitTest.xaml.cs
+ * Description: Handles CobblerUnitTest class 
+  */
+
 using System;
 using ExamTwoCodeQuestions.Data;
 using Xunit;
+using System.ComponentModel;
 
 namespace ExamTwoCodeQuestions.DataTests
 {
@@ -71,6 +77,72 @@ namespace ExamTwoCodeQuestions.DataTests
         {
             var cobbler = new Cobbler();
             Assert.IsAssignableFrom<IOrderItem>(cobbler);
+        }
+
+        /// <summary>
+        /// Ensures class implements INotifyChangedProperty
+        /// </summary>
+        [Fact]
+        public void CobblerShouldImplrementINotifyPropertyChanged()
+        {
+            var cobbler = new Cobbler();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(cobbler);
+        }
+
+        /// <summary>
+        /// Testing WithIceCream property for invocation of PropertyChanged
+        /// </summary>
+        [Fact]
+        public void ChangingIceCreamPropertyShouldInvokePropertyChangedForIceCream()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "WithIceCream", () =>
+            {
+                cobbler.WithIceCream = true;
+            });
+        }
+
+        /// <summary>
+        /// Testing WithIceCream property for invocation of PropertyChanged
+        /// </summary>
+        [Fact]
+        public void ChangingIceCreamPropertyShouldInvokePropertyChangedForPrice()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "Price", () =>
+            {
+                cobbler.WithIceCream = true;
+            });
+        }
+
+        /// <summary>
+        /// Testing WithIceCream property for invocation of PropertyChanged for special instructions
+        /// </summary>
+        [Fact]
+        public void ChangingIceCreamPropertyShouldInvokePropertyChangedForSpecialInstructions()
+        {
+            var cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "SpecialInstructions", () =>
+            {
+                cobbler.WithIceCream = true;
+            });
+        }
+
+        /// <summary>
+        /// Tests property changed for fruit filling
+        /// </summary>
+        /// <param name="filling">Fruitfilling property</param>
+        [Theory]
+        [InlineData(FruitFilling.Peach)]
+        [InlineData(FruitFilling.Cherry)]
+        [InlineData(FruitFilling.Blueberry)]
+        public void CobblerFruitChangeShouldNotifyPropertyChanged(FruitFilling filling)
+        {
+            Cobbler cobbler = new Cobbler();
+            Assert.PropertyChanged(cobbler, "Fruit", () =>
+            {
+                cobbler.Fruit = filling;
+            });
         }
     }
 }

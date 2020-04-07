@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Author: Cody Morse
+ * Class: CustomizeCobblerControl.xaml.cs
+ * Description: Handles CustomizeCobblerControl class for application (WPF)
+  */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -10,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ExamTwoCodeQuestions.Data;
 
 namespace ExamTwoQuestions.PointOfSale
 {
@@ -21,6 +27,6 @@ namespace ExamTwoQuestions.PointOfSale
         public CustomizeCobblerControl()
         {
             InitializeComponent();
-        }
+        }        
     }
 }

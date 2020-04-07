@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:ExamTwoQuestions.PointOfSale"
         xmlns:data="clr-namespace:ExamTwoCodeQuestions.Data;assembly=ExamTwoCodeQuestions.Data"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="280" Width="800">
     <Window.DataContext>
         <data:Cobbler/>
     </Window.DataContext>
     <Grid>
         <local:CustomizeCobblerControl/>
+
+        <Border BorderBrush="Black" BorderThickness="3"/>
     </Grid>
 </Window>

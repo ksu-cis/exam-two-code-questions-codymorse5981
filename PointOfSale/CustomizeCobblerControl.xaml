@@ -3,10 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ExamTwoQuestions.PointOfSale"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:ExamTwoCodeQuestions.Data;assembly=ExamTwoCodeQuestions.Data"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock>Customize Cobbler</TextBlock>
+             d:DesignHeight="240" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="LayoutTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:FruitFilling"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+        <TextBox Grid.ColumnSpan="1" Grid.RowSpan="4"></TextBox>
+
+        <TextBlock Text="Customize Cobbler" FontSize="50" Grid.ColumnSpan="2" TextAlignment="Center" VerticalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
+            <TextBlock VerticalAlignment="Center" FontSize="25" Padding="20">Filling:</TextBlock>
+            <ComboBox SelectedValue ="{Binding Path=Fruit}" SelectedIndex="0" Height="40" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="150"
+              ItemsSource="{Binding Source={StaticResource dataFromEnum}}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
+            <TextBlock VerticalAlignment="Center" FontSize="25" Padding="20">Options:</TextBlock>
+            <CheckBox IsChecked="{Binding Path = WithIceCream}" Margin="10" VerticalContentAlignment="Center"  VerticalAlignment="Center" FontSize="25" Content="Ice Cream"></CheckBox>
+        </StackPanel>
+            
     </Grid>
 </UserControl>
